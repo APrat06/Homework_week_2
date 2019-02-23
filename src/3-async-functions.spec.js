@@ -24,67 +24,67 @@ describe("Assignment 3 - async", function() {
     )
   })
 
-  // it("giveItBackLater should use callback, but not straight away", function(done) {
-  //   let functionSetupDone = false
-  //   const { giveItBackLater } = require("./async-functions")
-  //   giveItBackLater("TotallyAwesomeValue", value => {
-  //     if (!functionSetupDone) {
-  //       done("Callback should not be called straight away")
-  //     } else {
-  //       try {
-  //         assert.strictEqual(
-  //           value,
-  //           "TotallyAwesomeValue",
-  //           "Callback should receive the value passed to `giveItBackLater`"
-  //         )
-  //         done()
-  //       } catch (err) {
-  //         done(err)
-  //       }
-  //     }
-  //   })
-  //   functionSetupDone = true
-  // })
+  it("giveItBackLater should use callback, but not straight away", function(done) {
+    let functionSetupDone = false
+    const { giveItBackLater } = require("./async-functions")
+    giveItBackLater("TotallyAwesomeValue", value => {
+      if (!functionSetupDone) {
+        done("Callback should not be called straight away")
+      } else {
+        try {
+          assert.strictEqual(
+            value,
+            "TotallyAwesomeValue",
+            "Callback should receive the value passed to `giveItBackLater`"
+          )
+          done()
+        } catch (err) {
+          done(err)
+        }
+      }
+    })
+    functionSetupDone = true
+  })
 
-  // it("promiseToGiveItBackLater should return the given value", function(done) {
-  //   const { promiseToGiveItBackLater } = require("./async-functions")
-  //   promiseToGiveItBackLater("AnotherThing").then(value => {
-  //     assert.strictEqual(
-  //       value,
-  //       "AnotherThing",
-  //       "promise should resolve to the provided value"
-  //     )
-  //     done()
-  //   })
-  // })
+  it("promiseToGiveItBackLater should return the given value", function(done) {
+    const { promiseToGiveItBackLater } = require("./async-functions")
+    promiseToGiveItBackLater("AnotherThing").then(value => {
+      assert.strictEqual(
+        value,
+        "AnotherThing",
+        "promise should resolve to the provided value"
+      )
+      done()
+    })
+  })
 
-  // it("addSomePromises should chain promises and return a new promise", function(done) {
-  //   const { addSomePromises } = require("./async-functions")
-  //   const rejectedPromise = Promise.reject("failure")
-  //   const p1 = addSomePromises(Promise.resolve("success")),
-  //     p2 = addSomePromises(rejectedPromise)
-  //   // catch rejection to avoid warning
-  //   rejectedPromise.catch(() => null)
+  it("addSomePromises should chain promises and return a new promise", function(done) {
+    const { addSomePromises } = require("./async-functions")
+    const rejectedPromise = Promise.reject("failure")
+    const p1 = addSomePromises(Promise.resolve("success")),
+      p2 = addSomePromises(rejectedPromise)
+    // catch rejection to avoid warning
+    rejectedPromise.catch(() => null)
 
-  //   assert(p1 instanceof Promise, "addSomePromises should return a new promise")
-  //   assert(p2 instanceof Promise, "addSomePromises should return a new promise")
+    assert(p1 instanceof Promise, "addSomePromises should return a new promise")
+    assert(p2 instanceof Promise, "addSomePromises should return a new promise")
 
-  //   Promise.all([p1, p2]).then(([val1, val2]) => {
-  //     try {
-  //       assert.strictEqual(
-  //         val1,
-  //         "successsuccess",
-  //         "when the input promise resolves, the output promise should resolve with a doubled up string"
-  //       )
-  //       assert.strictEqual(
-  //         val2,
-  //         "failurefailurefailure",
-  //         "when the input promise rejects, the output promise should resolve with a tripled up string"
-  //       )
-  //       done()
-  //     } catch (err) {
-  //       done(err)
-  //     }
-  //   })
-  // })
+    Promise.all([p1, p2]).then(([val1, val2]) => {
+      try {
+        assert.strictEqual(
+          val1,
+          "successsuccess",
+          "when the input promise resolves, the output promise should resolve with a doubled up string"
+        )
+        assert.strictEqual(
+          val2,
+          "failurefailurefailure",
+          "when the input promise rejects, the output promise should resolve with a tripled up string"
+        )
+        done()
+      } catch (err) {
+        done(err)
+      }
+    })
+  })
 })
