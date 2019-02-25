@@ -10,7 +10,7 @@ groupAdultsByAgeRange = (argument) => {
 
     } else {
 
-        secondary.reduce((object, current_value) => {
+        const tertiary = secondary.reduce((object, current_value) => {
 
             if(current_value.age <= 20){object.a = object.a.concat(current_value)}
 
@@ -26,7 +26,7 @@ groupAdultsByAgeRange = (argument) => {
 
         }, {
             a: [], b: [], c: [], d: [], e: []
-        }, )
+        } )
 
         // a = '20 and younger'
         // b = '21-30'
@@ -34,7 +34,23 @@ groupAdultsByAgeRange = (argument) => {
         // d = '41-50'
         // e = '51 and older'
 
-    return secondary
+    if(tertiary.a.length === 0){
+        delete tertiary.a
+    }
+    if(tertiary.b.length === 0){
+        delete tertiary.b
+    }
+    if(tertiary.c.length === 0){
+        delete tertiary.c
+    }
+    if(tertiary.d.length === 0){
+        delete tertiary.d
+    }
+    if(tertiary.e.length === 0){
+        delete tertiary.e
+    }
+    
+    return tertiary
 
     }
 }
