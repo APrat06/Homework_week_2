@@ -1,14 +1,17 @@
-giveItBackLater = () => {
-
+someFunction = (param) => {
+    console.log(param)
 }
-addSomePromises = (message) => {
-    return new Promise(function (resolve, reject) {
-        resolve(message);
-        reject(new Error("Something went wrong, but don't blame the dev! (not immediately at least)"));
-      })
+
+someString = "I want to make this work";
+
+giveItBackLater = (someString, someFunction) => {
+    setTimeout(someFunction(someString), 500)
+}
+addSomePromises = () => {
+
 }
 promiseToGiveItBackLater = () => {
 
 }
 
-module.exports = {giveItBackLater, addSomePromises, promiseToGiveItBackLater}
+module.exports = {giveItBackLater, addSomePromises, promiseToGiveItBackLater, someFunction}

@@ -10,6 +10,12 @@ groupAdultsByAgeRange = (argument) => {
 
     } else {
 
+        // const a = '20 and younger'
+        // const b = '21-30'
+        // const c = '31-40'
+        // const d = '41-50'
+        // const e = '51 and older'
+
         const tertiary = secondary.reduce((object, current_value) => {
 
             if(current_value.age <= 20){object.a = object.a.concat(current_value)}
@@ -25,31 +31,18 @@ groupAdultsByAgeRange = (argument) => {
             return object
 
         }, {
-            a: [], b: [], c: [], d: [], e: []
+            a: [], b: [], c: [], d: [], e: [],
         } )
 
-        // a = '20 and younger'
-        // b = '21-30'
-        // c = '31-40'
-        // d = '41-50'
-        // e = '51 and older'
+    // let ct = ['20 and younger', '21-30', '31-40', '41-50', '51 and older'];
+    let ct = ['a', 'b', 'c', 'd', 'e'];
 
-    if(tertiary.a.length === 0){
-        delete tertiary.a
-    }
-    if(tertiary.b.length === 0){
-        delete tertiary.b
-    }
-    if(tertiary.c.length === 0){
-        delete tertiary.c
-    }
-    if(tertiary.d.length === 0){
-        delete tertiary.d
-    }
-    if(tertiary.e.length === 0){
-        delete tertiary.e
-    }
-    
+    ct.map(property => {
+        if(tertiary[property].length === 0){
+            delete tertiary[property]
+        }
+    })
+
     return tertiary
 
     }
