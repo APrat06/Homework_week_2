@@ -1,22 +1,22 @@
 class ShoppingCart {
     constructor(){
-        this.Items = []
+        this.items = []
     }
     getItems(){
-        return this.Items
+        return this.items
     }
     addItem(name, quantity, price){
-        this.Items.push({
+        this.items.push({
             name: name,
             quantity: quantity,
             pricePerUnit: price
         })
     }
     clear(){
-        this.Items = []
+        this.items = []
     }
     total(){
-        return this.Items.reduce((accumulator, next_value) => accumulator + next_value.pricePerUnit * next_value.quantity, 0)
+        return this.items.reduce((accumulator, nextValue) => accumulator + nextValue.pricePerUnit * nextValue.quantity, 0)
     }
 }
 
